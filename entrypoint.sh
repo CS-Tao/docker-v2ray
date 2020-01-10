@@ -16,7 +16,7 @@ alters_ids=(${CLIENTS_ALTERIDS//,/ })
 emails=(${CLIENTS_EMAILS//,/ })
 
 clients=""
-if [[ -z client_ids[0] ]]; then
+if [[ -n client_ids[0] ]]; then
   index=0
   for id in ${client_ids[@]}
     do
