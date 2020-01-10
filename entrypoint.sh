@@ -10,10 +10,10 @@ CONFIG_FILE=${CONFIG_FOLDER}/config.json
 
 [ -e ${CONFIG_FILE} ] && rm ${CONFIG_FILE}
 
-client_ids=(${V2RAY_CLIENTS_IDS//,/ })
-levels=(${V2RAY_CLIENTS_LEVELS//,/ })
-alters_ids=(${V2RAY_CLIENTS_ALTERIDS//,/ })
-emails=(${V2RAY_CLIENTS_EMAILS//,/ })
+client_ids=(${CLIENTS_IDS//,/ })
+levels=(${CLIENTS_LEVELS//,/ })
+alters_ids=(${CLIENTS_ALTERIDS//,/ })
+emails=(${CLIENTS_EMAILS//,/ })
 
 clients=""
 if [[ -z client_ids[0] ]]; then
