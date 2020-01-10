@@ -30,6 +30,8 @@ v2ray 的 docker 镜像，在原官方镜像的基础上添加了模板配置文
 
 ## 使用方法
 
+在线生成 uuid: [https://www.uuidgenerator.net/](https://www.uuidgenerator.net/)
+
 ```bash
 sudo docker run -d --rm \
   --name v2ray \
