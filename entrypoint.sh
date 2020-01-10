@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 default_level=1
 default_alterid=64
@@ -22,15 +22,15 @@ if [[ -z client_ids[0] ]]; then
     do
       [ -z ${levels[${index}]} ] && \
         level=${default_level} && \
-        echo `Level for client(${id}) not found. Use default Level: ${default_level}` || \
+        echo "Level for client(${id}) not found. Use default Level: ${default_level}" || \
         level=${levels[${index}]}
       [ -z ${alters_ids[${index}]} ] && \
         alterId=${default_alterid} && \
-        echo `AlterId for client(${id}) not found. Use default alter id: ${default_alterid}` || \
+        echo "AlterId for client(${id}) not found. Use default alter id: ${default_alterid}" || \
         alterId=${alters_ids[${index}]}
       [ -z ${emails[${index}]} ] && \
         email=${default_email} && \
-        echo `Email for client(${id}) not found. Use default email: ${default_email}` || \
+        echo "Email for client(${id}) not found. Use default email: ${default_email}" || \
         email=${emails[${index}]}
 
       client="
@@ -55,10 +55,10 @@ else
     \"email\": \"${default_email}\"
   }
   "
-  echo `No client id found. Use default client id: ${client_id}`
-  echo `Level is: ${default_level}`
-  echo `AlterId is: ${default_alterid}`
-  echo `Email is: ${default_email}`
+  echo "No client id found. Use default client id: ${client_id}"
+  echo "Level is: ${default_level}"
+  echo "AlterId is: ${default_alterid}"
+  echo "Email is: ${default_email}"
 fi
 
 cp ${TMEPL_FILE} ${CONFIG_FILE}
