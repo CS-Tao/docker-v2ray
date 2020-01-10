@@ -5,8 +5,9 @@ RUN apk update \
   && apk add --no-cache bash \
   bash-doc \
   bash-completion \
+  uuid-dev \
   && rm -rf /var/cache/apk/*
-
+apt-get install uuid-dev 
 COPY config.tmpl /etc/v2ray/config.tmpl
 COPY entrypoint.sh /etc/v2ray/entrypoint.sh
 
