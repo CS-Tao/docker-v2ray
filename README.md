@@ -1,7 +1,9 @@
 # docker-v2ray
 
-[![Deploy To GitHub Registry](https://github.com/CS-Tao/services/workflows/Deploy%20To%20GitHub%20Registry/badge.svg)](https://github.com/CS-Tao/services/actions?query=workflow%3A"Deploy+To+GitHub+Registry")
-[![Deploy To Docker Hub](https://github.com/CS-Tao/services/workflows/Deploy%20To%20Docker%20Hub/badge.svg)](https://github.com/CS-Tao/services/actions?query=workflow%3A"Deploy+To+Docker+Hub")
+v2ray 的 docker 镜像，在原官方镜像的基础上添加了模板配置文件，可在每次启动的时候通过模板配置和文件环境变量生成配置文件，以更方便地设置 client 的 uuid
+
+[![Deploy To GitHub Registry](https://github.com/CS-Tao/docker-v2ray/workflows/Deploy%20To%20GitHub%20Registry/badge.svg)](https://github.com/CS-Tao/docker-v2ray/packages/101776?version=master)
+[![Deploy To Docker Hub](https://github.com/CS-Tao/docker-v2ray/workflows/Deploy%20To%20Docker%20Hub/badge.svg)](https://hub.docker.com/r/cstao/docker-v2ray)
 
 ```bash
 sudo docker run -d --rm \
