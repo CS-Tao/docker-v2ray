@@ -1,6 +1,5 @@
 #!/bin/bash
 
-default_client_id=60ca58e9-003e-4c01-98de-c2223ae49153
 default_level=1
 default_alterid=64
 default_email=nobody@email.com
@@ -47,15 +46,16 @@ if [[ -z client_ids[0] ]]; then
       index=$(expr $index + 1)
     done
 else
+  client_id=uuid=$(uuidgen)
   clients="
   {
-    \"id\": \"${default_client_id}\",
+    \"id\": \"${client_id}\",
     \"level\": ${default_level},
     \"alterId\": ${default_alterid},
     \"email\": \"${default_email}\"
   }
   "
-  echo `No client id found. Use default client id: ${default_client_id}`
+  echo `No client id found. Use default client id: ${client_id}`
   echo `Level is: ${default_level}`
   echo `AlterId is: ${default_alterid}`
   echo `Email is: ${default_email}`
