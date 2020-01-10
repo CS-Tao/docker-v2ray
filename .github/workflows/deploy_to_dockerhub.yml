@@ -1,0 +1,14 @@
+name: Deploy To Docker Hub
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+      - name: Publish Image
+        uses: elgohr/Publish-Docker-Github-Action@master
+        with:
+          name: cstao/docker-v2ray
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
