@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 default_level=1
 default_alterid=64
