@@ -3,9 +3,7 @@ FROM v2ray/official:latest
 RUN apk update \
   && apk upgrade \
   && apk add --no-cache bash \
-  bash-doc \
-  bash-completion \
-  uuid-dev \
+  ossp-uuid-dev \
   && rm -rf /var/cache/apk/*
 
 COPY config.tmpl /etc/v2ray/config.tmpl
