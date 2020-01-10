@@ -7,6 +7,6 @@ RUN chmod +x /etc/v2ray/entrypoint.sh
 
 WORKDIR /etc/v2ray/
 
-ENTRYPOINT ["entrypoint.sh"]
+ENTRYPOINT ["./entrypoint.sh"]
 
 CMD ["v2ray", "-config=/etc/v2ray/config.json"]
