@@ -33,7 +33,7 @@ sudo docker run -d --rm \
 
 ## 模板配置文件示例 (镜像默认的模板配置文件)
 
-容器每次启动的时候会通过环境变量生成配置文件所需的 clients 字段，即替换掉模板配置文件中所有的`{CLIENTS_TEMPLATE}`字符串
+容器每次启动的时候会通过环境变量生成配置文件所需的 clients 字段，然后替换掉模板配置文件中所有的`{CLIENTS_TEMPLATE}`字符串
 
 ```json
 {
