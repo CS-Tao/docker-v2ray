@@ -21,7 +21,7 @@ sudo docker run -d --rm \
   docker.pkg.github.com/cs-tao/docker-v2ray/docker-v2ray:master
 ```
 
-## 环境变量说明
+## 环境变量
 
 **CLIENTS_IDS**: uuid，用于用户认证，不同用户用逗号隔开，不能有空格。未设置此变量时系统会自动生成一个 uuid，可在容器启动后运行`docker logs v2ray`查看
 
