@@ -17,7 +17,7 @@ sudo docker run -d --rm \
   -e CLIENTS_ALTERIDS=64,64,32 \
   -e CLIENTS_EMAILS=email1,email2,email3 \
   -p 80:8080 \
-  -v ./config.tmpl:/etc/v2ray/config.tmpl:ro
+  -v ./config.tmpl:/etc/v2ray/config.tmpl:ro \
   docker.pkg.github.com/cs-tao/docker-v2ray/docker-v2ray:master
 ```
 
