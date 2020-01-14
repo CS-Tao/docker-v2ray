@@ -45,7 +45,7 @@ sudo docker run -d --rm \
   -e REPLACEMENTS={PORT}:8080,{UUID}:your_uuid,{ALTERID}:64,{LEVEL}:1,{EMAIL}:your@email.com \
   -p 80:8080 \
   -v ./config.tmpl:/etc/v2ray/config.tmpl:ro \
-  cstao/docker-v2ray:v1.0.0
+  cstao/docker-v2ray:v2.0.0
 ```
 
 *通过`REPLACEMENTS`规定需要替换的内容，格式为`old1:new1,old2:new2,...`，容器内部使用`sed`命令执行替换操作，注意特殊字符需要使用`\`转义*
