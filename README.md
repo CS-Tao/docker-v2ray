@@ -42,7 +42,7 @@ v2ray 的 docker 镜像，在原官方镜像的基础上添加了模板配置文
 ```bash
 sudo docker run -d --rm \
   --name v2ray \
-  -e REPLACEMENTS={PORT}:8080,{UUID}:your_uuid,{ALTERID}:64,{LEVEL}:1,{EMAIL}:whucstao@gmail.com \
+  -e REPLACEMENTS={PORT}:8080,{UUID}:your_uuid,{ALTERID}:64,{LEVEL}:1,{EMAIL}:your@email.com \
   -p 80:8080 \
   -v ./config.tmpl:/etc/v2ray/config.tmpl:ro \
   cstao/docker-v2ray:v1.0.0
