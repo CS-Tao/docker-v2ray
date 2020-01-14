@@ -3,7 +3,7 @@
 set -e
 
 # CONFIG_FOLDER=/etc/v2ray
-CONFIG_FOLDER=/etc/v2ray
+CONFIG_FOLDER=.
 TMEPL_FILE=${CONFIG_FOLDER}/config.tmpl
 CONFIG_FILE=${CONFIG_FOLDER}/config.json
 
@@ -31,7 +31,10 @@ pairs=(${REPLACEMENTS//,/ })
 for pair in ${pairs[@]}
   do
     oldnew=(${pair//:/ })
-    [ ${#oldnew[@]} -ne 2 ] && \
+    echo $oldnew
+    echo ${oldnew[0]}
+    echo ${oldnew[1]}
+    [ ${#oldnew[@]} -ne 2 || -z ${oldnew[0]} || -z ${oldnew[1]} ] && \
       echo -e ${FORMAT_ERR_MSG} && \
       initconfig && \
       exit 1
