@@ -3,7 +3,7 @@
 set -e
 
 # CONFIG_FOLDER=/etc/v2ray
-CONFIG_FOLDER=.
+CONFIG_FOLDER=/etc/v2ray
 TMEPL_FILE=${CONFIG_FOLDER}/config.tmpl
 CONFIG_FILE=${CONFIG_FOLDER}/config.json
 
