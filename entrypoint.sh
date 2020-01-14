@@ -1,70 +1,45 @@
 #!/bin/bash
 
-default_level=1
-default_alterid=64
-default_email=nobody@email.com
+set -e
 
-CONFIG_FOLDER=/etc/v2ray
+REPLACEMENTS={PORT}:8080,{ALTERID_1}:64
+
+# CONFIG_FOLDER=/etc/v2ray
+CONFIG_FOLDER=.
 TMEPL_FILE=${CONFIG_FOLDER}/config.tmpl
 CONFIG_FILE=${CONFIG_FOLDER}/config.json
 
-[ -e ${CONFIG_FILE} ] && rm ${CONFIG_FILE}
+NO_ENV_MSG="\033[31mNo REPLACEMENTS env found, use config.tmpl directly.\033[0m"
+FORMAT_ERR_MSG="\033[31mREPLACEMENTS env format error.\033[0m"
+DONE_MSG="\033[32mConfigured, starting...\033[0m"
 
-client_ids=(${CLIENTS_IDS//,/ })
-levels=(${CLIENTS_LEVELS//,/ })
-alters_ids=(${CLIENTS_ALTERIDS//,/ })
-emails=(${CLIENTS_EMAILS//,/ })
+initconfig () {
+  [ -e ${CONFIG_FILE} ] && rm ${CONFIG_FILE}
+  cp ${TMEPL_FILE} ${CONFIG_FILE}
+}
 
-clients=""
-if [[ -n client_ids[0] ]]; then
-  index=0
-  for id in ${client_ids[@]}
-    do
-      [ -z ${levels[${index}]} ] && \
-        level=${default_level} && \
-        echo "Level for client(${id}) not found. Use default Level: ${default_level}" || \
-        level=${levels[${index}]}
-      [ -z ${alters_ids[${index}]} ] && \
-        alterId=${default_alterid} && \
-        echo "AlterId for client(${id}) not found. Use default alter id: ${default_alterid}" || \
-        alterId=${alters_ids[${index}]}
-      [ -z ${emails[${index}]} ] && \
-        email=${default_email} && \
-        echo "Email for client(${id}) not found. Use default email: ${default_email}" || \
-        email=${emails[${index}]}
+initconfig
 
-      client="
-      {
-        \"id\": \"$id\",
-        \"level\": ${level},
-        \"alterId\": ${alterId},
-        \"email\": \"${email}\"
-      }
-      "
-      [[ ${index} -eq 0 ]] && clients=${client} || clients=${clients},${client}
+pairs=(${REPLACEMENTS//,/ })
 
-      index=$(expr $index + 1)
-    done
-else
-  client_id=uuid=$(uuidgen)
-  clients="
-  {
-    \"id\": \"${client_id}\",
-    \"level\": ${default_level},
-    \"alterId\": ${default_alterid},
-    \"email\": \"${default_email}\"
-  }
-  "
-  echo "No client id found. Use default client id: ${client_id}"
-  echo "Level is: ${default_level}"
-  echo "AlterId is: ${default_alterid}"
-  echo "Email is: ${default_email}"
-fi
+[ -z ${REPLACEMENTS} ] && \
+  echo -e ${NO_ENV_MSG} && \
+  exit 0
 
-cp ${TMEPL_FILE} ${CONFIG_FILE}
+[ ${#pairs[@]} -le 1 ] && \
+  echo -e ${FORMAT_ERR_MSG} && \
+  exit 1
 
-sed -i "s/{CLIENTS_TEMPLATE}/$(echo ${clients})/g" ${CONFIG_FILE}
+for pair in ${pairs[@]}
+  do
+    oldnew=(${pair//:/ })
+    [ ${#oldnew[@]} -ne 2 ] && \
+      echo -e ${FORMAT_ERR_MSG} && \
+      initconfig && \
+      exit 1
+    sed -i "s/${oldnew[0]}/$(echo ${oldnew[1]})/g" ${CONFIG_FILE}
+  done
 
-echo "Configured, starting..."
+echo -e ${DONE_MSG}
 
 exec "$@"

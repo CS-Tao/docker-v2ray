@@ -12,3 +12,4 @@ jobs:
           name: cstao/docker-v2ray
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
+          tags: "master,latest,v2.0.0"
