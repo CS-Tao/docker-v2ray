@@ -31,9 +31,6 @@ pairs=(${REPLACEMENTS//,/ })
 for pair in ${pairs[@]}
   do
     oldnew=(${pair//:/ })
-    echo "oldnew: $oldnew"
-    echo "0: ${oldnew[0]}"
-    echo "1: ${oldnew[1]}"
     [ ${#oldnew[@]} -ne 2 ] || [ -z ${oldnew[0]} ] || [ -z ${oldnew[1]} ] && \
       echo -e ${FORMAT_ERR_MSG} && \
       initconfig && \
