@@ -2,8 +2,7 @@
 
 set -e
 
-# CONFIG_FOLDER=/etc/v2ray
-CONFIG_FOLDER=.
+CONFIG_FOLDER=/etc/v2ray
 TMEPL_FILE=${CONFIG_FOLDER}/config.tmpl
 CONFIG_FILE=${CONFIG_FOLDER}/config.json
 
@@ -24,7 +23,7 @@ pairs=(${REPLACEMENTS//,/ })
   echo -e ${NO_ENV_MSG} && \
   exit 0
 
-[ ${#pairs[@]} -le 1 ] && \
+[ ${#pairs[@]} -lt 1 ] && \
   echo -e ${FORMAT_ERR_MSG} && \
   exit 1
 
